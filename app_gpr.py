@@ -20,7 +20,8 @@ ARCHIVO_LOCAL = "Matriz_Mensual_Geopol_Normalizada.csv"
 ARCHIVO_PR = "Matriz_PageRank_MinMax_Pais.csv"
 
 # URL pública para obtener las fronteras de los países en formato GeoJSON
-URL_GEOJSON = "https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json"
+with open("data/countries.geo.json") as f:
+    geojson_data = json.load(f)
 
 # =========================================================
 # DICCIONARIO MAESTRO: TRADUCTOR DE 3 LETRAS A 2 LETRAS
@@ -63,7 +64,7 @@ iso_3_to_2 = {
 # =========================================================
 # CARGA Y PRE-PROCESAMIENTO
 # =========================================================
-@st.cache_data
+@st.cache_data(show_spinner=False)
 def cargar_matrices_y_geojson():
     df_orig = pd.read_csv(ARCHIVO_LOCAL, index_col='Mes')
     df_pr = pd.read_csv(ARCHIVO_PR, index_col='Mes')
@@ -73,8 +74,8 @@ def cargar_matrices_y_geojson():
     df_pr = df_pr[paises]
     
     try:
-        respuesta = requests.get(URL_GEOJSON, verify=False)
-        geojson_data = respuesta.json()
+        with open("data/countries.geo.json") as f:
+        geojson_data = json.load(f)
     except Exception as e:
         st.error(f"No se pudo cargar el mapa base GeoJSON: {e}")
         geojson_data = {"type": "FeatureCollection", "features": []}
@@ -83,8 +84,8 @@ def cargar_matrices_y_geojson():
 
 df_orig, df_pr, geojson_base = cargar_matrices_y_geojson()
 
-df_orig.index = pd.to_datetime(df_orig.index)
-df_pr.index = pd.to_datetime(df_pr.index)
+df_orig.index = pd.to_datetime(df_orig.index, errors='coerce')
+df_pr.index = pd.to_datetime(df_pr.index, errors='coerce')
 
 df_gap_completo = df_pr - df_orig
 
