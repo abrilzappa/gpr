@@ -256,10 +256,4 @@ fig.update_layout(
     legend_title="",
 )
 
-st.plotly_chart(
-    fig,
-    use_container_width=True,
-    config={
-        "displayModeBar": False  # 🔥 ESTO QUITA EL MENÚ
-    }
-)
+st.line_chart(df_grafica)
