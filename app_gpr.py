@@ -246,5 +246,4 @@ if pais_seleccionado:
         'Riesgo Sistémico (PageRank Min-Max)': s_pr
     })
     
-
-st.line_chart(df_grafica)
+    st.line_chart(df_grafica)
