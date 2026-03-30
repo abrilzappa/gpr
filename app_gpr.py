@@ -16,8 +16,8 @@ st.title("🌎 Monitor de Contagio Global: Efecto Red")
 st.caption("🔴 Rojo Puro: El riesgo es sistémico (PageRank domina) | 🟢 Verde Puro: El riesgo es local | Blanco: Sin datos")
 
 # Rutas de tus archivos Min-Max
-ARCHIVO_LOCAL = "Matriz_Mensual_Geopol_Normalizada.csv"
-ARCHIVO_PR = "Matriz_PageRank_MinMax_Pais.csv"
+ARCHIVO_LOCAL = "https://drive.google.com/uc?export=download&id=1wr_gcUpl8jF7-kLkv7wskZ2j3tnAPxtE"
+ARCHIVO_PR = "https://drive.google.com/uc?export=download&id=1m3cNwunE-DktYSQtJY8st6-ild5sUb4Q"
 
 # =========================================================
 # DICCIONARIO MAESTRO: TRADUCTOR DE 3 LETRAS A 2 LETRAS
