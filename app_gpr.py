@@ -2,8 +2,7 @@ import streamlit as st
 import pandas as pd
 import pydeck as pdk
 import numpy as np
-import requests
-import urllib3
+import json
 
 # Desactivar advertencias de SSL para evitar bloqueos de red
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -18,10 +17,6 @@ st.caption("🔴 Rojo Puro: El riesgo es sistémico (PageRank domina) | 🟢 Ver
 # Rutas de tus archivos Min-Max
 ARCHIVO_LOCAL = "Matriz_Mensual_Geopol_Normalizada.csv"
 ARCHIVO_PR = "Matriz_PageRank_MinMax_Pais.csv"
-
-# URL pública para obtener las fronteras de los países en formato GeoJSON
-with open("data/countries.geo.json") as f:
-    geojson_data = json.load(f)
 
 # =========================================================
 # DICCIONARIO MAESTRO: TRADUCTOR DE 3 LETRAS A 2 LETRAS
@@ -74,8 +69,8 @@ def cargar_matrices_y_geojson():
     df_pr = df_pr[paises]
     
     try:
-        with open("data/countries.geo.json") as f:
-        geojson_data = json.load(f)
+        with open("countries.geo.json") as f:
+            geojson_data = json.load(f)
     except Exception as e:
         st.error(f"No se pudo cargar el mapa base GeoJSON: {e}")
         geojson_data = {"type": "FeatureCollection", "features": []}
