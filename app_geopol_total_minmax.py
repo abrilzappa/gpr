@@ -16,8 +16,8 @@ st.title("🌎 Monitor de Contagio Global: Efecto Red")
 st.caption("🔴 Rojo Puro: El riesgo es sistémico (PageRank domina) | 🟢 Verde Puro: El riesgo es local | Blanco: Sin datos")
 
 # Rutas de tus archivos Min-Max
-ARCHIVO_LOCAL = r"D:\geopolitical_risk\Matriz_Mensual_Geopol_Normalizada.csv"
-ARCHIVO_PR = r"D:\geopolitical_risk\Matriz_PageRank_MinMax_Pais.csv"
+ARCHIVO_LOCAL = "Matriz_Mensual_Geopol_Normalizada.csv"
+ARCHIVO_PR = "Matriz_PageRank_MinMax_Pais.csv"
 
 # URL pública para obtener las fronteras de los países en formato GeoJSON
 URL_GEOJSON = "https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json"
