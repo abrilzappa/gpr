@@ -246,4 +246,20 @@ if pais_seleccionado:
         'Riesgo Sistémico (PageRank Min-Max)': s_pr
     })
     
-    st.line_chart(df_grafica)
+    import plotly.express as px
+
+fig = px.line(df_grafica)
+
+fig.update_layout(
+    xaxis_title="Fecha",
+    yaxis_title="Índice",
+    legend_title="",
+)
+
+st.plotly_chart(
+    fig,
+    use_container_width=True,
+    config={
+        "displayModeBar": False  # 🔥 ESTO QUITA EL MENÚ
+    }
+)
