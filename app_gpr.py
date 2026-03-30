@@ -3,6 +3,7 @@ import pandas as pd
 import pydeck as pdk
 import numpy as np
 import json
+import urllib3
 
 # Desactivar advertencias de SSL para evitar bloqueos de red
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
